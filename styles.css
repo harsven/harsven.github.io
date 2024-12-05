@@ -104,18 +104,18 @@ body {
     text-decoration: underline;
 }
 
-/* Social Media Icons (Horizontal Layout) */
+/* Social Media Icons */
 .social-media {
     display: flex;
     justify-content: center;
-    gap: 20px;  /* Adds space between the icons */
+    gap: 20px; /* Space between icons */
     margin-top: 30px;
 }
 
 .social-media a {
     display: inline-block;
-    width: 60px; /* Increased size for the icons */
-    height: 60px; /* Increased size for the icons */
+    width: 60px; /* Increased icon size */
+    height: 60px; /* Increased icon size */
     background: #fff;
     text-align: center;
     border-radius: 50%;
@@ -161,17 +161,28 @@ body {
     }
 
     .profile-content img {
-        width: 100%;
+        width: 100%; /* Full width for mobile */
     }
 
     .container h1 {
         font-size: 28px;
     }
 
-    /* Make sure icons stay horizontal even on mobile */
+    /* Ensure the icons stay horizontal even on mobile */
     .social-media {
         display: flex;
         justify-content: center;
         gap: 20px;
+        flex-wrap: nowrap; /* Ensures icons stay in one line */
+    }
+
+    .social-media a {
+        width: 50px;  /* Reduced icon size for mobile */
+        height: 50px; /* Reduced icon size for mobile */
+    }
+
+    .social-media .icon {
+        font-size: 25px;  /* Reduced icon size for mobile */
+        line-height: 50px;  /* Align icon vertically */
     }
 }
