@@ -13,62 +13,72 @@
             background-color: #f9f9f9;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
         .header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
             background-color: #317eae;
-            padding: 10px 20px;
-            color: white;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .header a {
             text-decoration: none;
             color: white;
-            margin: 0 15px;
+            margin: 0 20px;
             font-weight: bold;
+            font-size: 16px;
         }
 
         .header a:hover {
             text-decoration: underline;
         }
 
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-image {
+            max-width: 150px;
+            border-radius: 50%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
         .content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
             background-color: white;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            text-align: center;
         }
 
-        .content img {
-            width: 100%;
-            max-width: 33%; /* Image takes 1/3 of the width */
-            border-radius: 10px;
+        .content p {
+            margin-bottom: 15px;
+            font-size: 16px;
         }
 
-        .text-content {
-            flex-grow: 1; /* Text takes the remaining 2/3 of the space */
-            padding: 20px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .text-content a {
+        .content a {
             color: #317eae;
             text-decoration: none;
+            font-weight: bold;
         }
 
-        .text-content a:hover {
+        .content a:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -82,22 +92,20 @@
     </div>
 
     <div class="container">
-        <div class="content">
-            <!-- Image -->
-            <img src="images/Homepage_transparent.png" alt="Sven Hartmann">
+        <!-- Profile Image -->
+        <img src="images/Homepage_transparent.png" alt="Sven Hartmann" class="profile-image">
 
-            <!-- Text -->
-            <div class="text-content">
-                <p>
-                    My research interests lie in labor and media economics, with a preference for working on projects that use naturally occurring data.
-                </p>
-                <p>
-                    After completing my Ph.D. at Trier University, I continued my research at Trier as a Postdoctoral Researcher at the Chair of Personnel Economics and the Institute for Labour Law and Industrial Relations in the European Union (IAAEU). In the academic year 2021/22, I was a visiting Ph.D. student at the University of Oxford.
-                </p>
-                <p>
-                    Please find the most recent version of my CV <a href="path-to-cv.pdf" target="_blank">here</a>. Don't hesitate to contact me if you have further questions or just want to discuss research ideas!
-                </p>
-            </div>
+        <!-- Text Content -->
+        <div class="content">
+            <p>
+                My research interests lie in labor and media economics, with a preference for working on projects that use naturally occurring data.
+            </p>
+            <p>
+                After completing my Ph.D. at Trier University, I continued my research at Trier as a Postdoctoral Researcher at the Chair of Personnel Economics and the Institute for Labour Law and Industrial Relations in the European Union (IAAEU). In the academic year 2021/22, I was a visiting Ph.D. student at the University of Oxford.
+            </p>
+            <p>
+                Please find the most recent version of my CV <a href="path-to-cv.pdf" target="_blank">here</a>. Don't hesitate to contact me if you have further questions or just want to discuss research ideas!
+            </p>
         </div>
     </div>
 </body>
