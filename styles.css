@@ -1,188 +1,78 @@
-/* General Body Styling */
+/* General body and container styles */
 body {
     font-family: 'Lato', Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
 }
 
-/* Header styling */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #317eae;
-    padding: 15px;
-    position: relative;
+/* Research title */
+h1 {
+    color: #317eae; /* Blue color */
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
-.header a {
-    text-decoration: none;
-    color: white;
-    margin: 0 20px;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.header a:hover {
-    text-decoration: underline;
-}
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 30px;
-    height: 25px;
-}
-
-.hamburger div {
-    width: 30px;
-    height: 4px;
-    background-color: white;
-    border-radius: 2px;
-}
-
-/* Main container for profile section */
+/* Container for the project */
 .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 50px auto;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: white;
+    background-color: #fff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Box shadow */
     border-radius: 10px;
-    text-align: center;
 }
 
-.container h1 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #317eae;
+/* Project styling */
+.project {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.project h2 {
+    font-size: 1.8rem;
+    color: #317eae; /* Blue color */
     margin-bottom: 20px;
 }
 
-/* Flexbox for image and text */
-.profile-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.project p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 10px 0;
 }
 
-.profile-content img {
-    width: 33%;
-    max-width: 33%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.text-content {
-    flex: 2;
-    line-height: 1.8;
-    padding-left: 20px;
-    text-align: left;
-}
-
-.text-content p {
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-.text-content a {
+/* Links styling */
+.project a {
     color: #317eae;
     text-decoration: none;
-    font-weight: bold;
 }
 
-.text-content a:hover {
+.project a:hover {
     text-decoration: underline;
 }
 
-/* Social Media Icons */
-.social-media {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between icons */
-    margin-top: 30px;
+.underline {
+    text-decoration: underline;
 }
 
-.social-media a {
-    display: inline-block;
-    width: 60px; /* Increased icon size */
-    height: 60px; /* Increased icon size */
-    background: #fff;
-    text-align: center;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.social-media a:hover {
-    transform: scale(1.2); /* Slightly larger on hover */
-    background-color: #f0f0f0; /* Background change on hover */
-}
-
-.social-media .icon {
-    font-size: 30px; /* Increased icon size */
-    line-height: 60px; /* Align icon vertically */
-    color: #555;
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
+/* Small screen styles (responsive design) */
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
     }
 
-    .hamburger {
-        display: flex;
+    .project h2 {
+        font-size: 1.5rem;
     }
 
-    .header a {
-        display: none;
+    .container {
+        padding: 15px;
     }
 
-    .header.active a {
-        display: block;
-        margin: 10px 0;
-        font-size: 18px;
-    }
-
-    .profile-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .profile-content img {
-        width: 100%; /* Full width for mobile */
-    }
-
-    .container h1 {
-        font-size: 28px;
-    }
-
-    /* Ensure the icons stay horizontal even on mobile */
-    .social-media {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: nowrap; /* Ensures icons stay in one line */
-    }
-
-    .social-media a {
-        width: 50px;  /* Reduced icon size for mobile */
-        height: 50px; /* Reduced icon size for mobile */
-    }
-
-    .social-media .icon {
-        font-size: 25px;  /* Reduced icon size for mobile */
-        line-height: 50px;  /* Align icon vertically */
+    .project {
+        padding: 10px;
     }
 }
