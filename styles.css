@@ -104,21 +104,16 @@ body {
     text-decoration: underline;
 }
 
-/* Social Media Icons */
-ul.social-media {
-    margin-top: 30px;
+/* Social Media Icons (Horizontal Layout) */
+.social-media {
     display: flex;
     justify-content: center;
-    list-style: none;
-    padding: 0;
+    gap: 20px;  /* Adds space between the icons */
+    margin-top: 30px;
 }
 
-ul.social-media li {
-    margin: 0 15px;
-}
-
-ul.social-media a {
-    display: block;
+.social-media a {
+    display: inline-block;
     width: 50px;
     height: 50px;
     background: #fff;
@@ -128,11 +123,11 @@ ul.social-media a {
     transition: transform 0.3s ease;
 }
 
-ul.social-media a:hover {
+.social-media a:hover {
     transform: scale(1.1);
 }
 
-ul.social-media .icon {
+.social-media .icon {
     font-size: 24px;
     line-height: 50px;
     color: #555;
@@ -170,5 +165,10 @@ ul.social-media .icon {
 
     .container h1 {
         font-size: 28px;
+    }
+
+    .social-media {
+        flex-direction: column;
+        gap: 15px;
     }
 }
