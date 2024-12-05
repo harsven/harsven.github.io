@@ -28,9 +28,9 @@ header {
 }
 
 .nav-links {
-    display: flex; /* Aligns the links horizontally */
+    display: flex;
     justify-content: space-between;
-    gap: 40px; /* Adds more space between links */
+    gap: 40px;
 }
 
 .nav-links a {
@@ -38,18 +38,48 @@ header {
     color: #317eae;
     font-size: 16px;
     font-weight: 700;
-    text-transform: uppercase; /* Makes the text all uppercase */
-    letter-spacing: 2px; /* Adds spacing between letters */
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .nav-links a:hover {
-    color: #205f78; /* Darker blue on hover */
+    color: #205f78;
 }
 
 main {
-    padding: 20px;
+    padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.about-me {
+    display: flex;
+    align-items: center; /* Aligns the image and text horizontally */
+    gap: 40px; /* Adds space between image and text */
+}
+
+.profile img {
+    width: 200px; /* You can adjust the image size */
+    height: 200px; /* Maintain aspect ratio if necessary */
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Ensures image covers the box without distortion */
+}
+
+.bio {
+    max-width: 800px; /* Limits text width for better readability */
+}
+
+.bio p {
+    line-height: 1.6; /* Increases line height for better readability */
+}
+
+.bio a {
+    color: #317eae;
+    text-decoration: none;
+}
+
+.bio a:hover {
+    text-decoration: underline;
 }
 
 footer {
@@ -58,15 +88,16 @@ footer {
     background-color: #f8f8f8;
 }
 
-/* Make navigation links look better on mobile screens */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
+    .about-me {
+        flex-direction: column; /* Stacks the image and text vertically on smaller screens */
         align-items: flex-start;
+        gap: 20px;
     }
 
-    .nav-links {
-        flex-direction: column;
-        gap: 20px; /* Add spacing between vertically stacked links */
+    .profile img {
+        width: 150px; /* Adjust image size for mobile */
+        height: 150px;
     }
 }
