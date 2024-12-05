@@ -23,18 +23,21 @@ h1 {
     background-color: #fff;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Box shadow */
     border-radius: 10px;
+    margin-bottom: 40px;
 }
 
 /* Project styling */
 .project {
     padding: 20px;
     background-color: #fff;
+    margin-bottom: 30px;
 }
 
 .project h2 {
     font-size: 1.8rem;
     color: #317eae; /* Blue color */
     margin-bottom: 20px;
+    text-align: left;
 }
 
 .project p {
@@ -42,6 +45,7 @@ h1 {
     line-height: 1.6;
     color: #333;
     margin: 10px 0;
+    text-align: left;
 }
 
 /* Links styling */
