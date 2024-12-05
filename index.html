@@ -13,11 +13,14 @@
             background-color: #f9f9f9;
         }
 
+        /* Header styling */
         .header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
             background-color: #317eae;
             padding: 15px;
+            position: relative;
         }
 
         .header a {
@@ -32,6 +35,24 @@
             text-decoration: underline;
         }
 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 30px;
+            height: 25px;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Main container for profile section */
         .container {
             display: flex;
             max-width: 1200px;
@@ -70,7 +91,27 @@
             text-decoration: underline;
         }
 
+        /* Media Queries for responsiveness */
         @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header a {
+                display: none;
+            }
+
+            .header.active a {
+                display: block;
+                margin: 10px 0;
+                font-size: 18px;
+            }
+
             .container {
                 flex-direction: column;
                 text-align: center;
@@ -89,6 +130,11 @@
 </head>
 <body>
     <div class="header">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
         <a href="teaching.html">Teaching</a>
@@ -97,10 +143,8 @@
     </div>
 
     <div class="container">
-        <!-- Profile Image -->
         <img src="images/Homepage_transparent.png" alt="Sven Hartmann">
 
-        <!-- Text Content -->
         <div class="text-content">
             <p>
                 My research interests lie in labor and media economics, with a preference for working on projects that use naturally occurring data.
@@ -113,5 +157,12 @@
             </p>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const header = document.querySelector('.header');
+            header.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
