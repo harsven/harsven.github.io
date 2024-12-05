@@ -3,29 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sven Hartmann's Homepage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Sven Hartmann</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> <!-- Lato Font -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Sven Hartmann's Homepage</h1>
-            <p>Welcome to my personal website! I am a researcher and academic...</p>
-        </header>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <h1><a href="/">Sven Hartmann</a></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-        <!-- Add your content here (text, images, etc.) -->
-        <section>
+    <main>
+        <!-- Introduction Section -->
+        <section class="intro">
+            <h2>Welcome to My Personal Website</h2>
+            <p>Welcome to my personal website. I am a researcher in the field of economics, specializing in energy and climate change. Here you can learn more about my work and get in touch with me.</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
             <h2>About Me</h2>
-            <p>Here is some text about you. You can paste the content you copied from your Google Sites page here.</p>
+            <p>I am currently working as a researcher and academic with a focus on environmental economics. My work addresses various aspects of environmental issues such as pollution, climate change, and sustainability. My research is often interdisciplinary, integrating economics, policy analysis, and data science.</p>
         </section>
 
-        <section>
+        <!-- Research Section -->
+        <section id="research">
             <h2>Research</h2>
-            <p>Details of your research projects, papers, and conferences.</p>
+            <p>My research focuses on environmental economics, policy analysis, and the economic impacts of climate change. Some of my key projects include:</p>
+            <ul>
+                <li><a href="#">Project 1: Title of Your Project</a></li>
+                <li><a href="#">Project 2: Title of Your Project</a></li>
+                <li><a href="#">Project 3: Title of Your Project</a></li>
+                <!-- Add more projects here -->
+            </ul>
         </section>
 
-        <!-- Add more sections as necessary -->
-    </div>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you would like to get in touch, please feel free to reach out to me via email or social media.</p>
+            <p>Email: <a href="mailto:sven.hartmann@example.com">sven.hartmann@example.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sven Hartmann</p>
+    </footer>
 </body>
 </html>
