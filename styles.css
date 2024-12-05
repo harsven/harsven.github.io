@@ -1,0 +1,37 @@
+body {
+    font-family: 'Lato', Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #317eae;
+}
+
+.project {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+a {
+    color: #317eae;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.underline {
+    text-decoration: underline;
+}
