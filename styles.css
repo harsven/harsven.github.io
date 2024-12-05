@@ -6,21 +6,30 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
 }
 
-h1 {
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
     color: #317eae;
 }
 
-.project {
+section {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+}
+
+section h2 {
+    color: #317eae;
 }
 
 a {
@@ -29,9 +38,5 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
-}
-
-.underline {
     text-decoration: underline;
 }
