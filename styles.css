@@ -9,7 +9,7 @@ body {
 
 /* Main title */
 h1 {
-    color: #1a73e8; /* Blue */
+    color: #1a73e8; /* Blue for the main title */
     font-size: 36px;
     text-align: center;
     margin-top: 20px;
@@ -26,7 +26,7 @@ h2 {
 /* Project Title */
 .project-title {
     font-size: 26px; /* Title size in blue */
-    color: #1a73e8; /* Blue */
+    color: #1a73e8 !important; /* Blue color, with !important to ensure override */
     margin-bottom: 10px;
     text-align: left;
 }
@@ -48,7 +48,7 @@ h2 {
 
 /* Text links */
 a {
-    color: #1a73e8;
+    color: #1a73e8; /* Blue links */
     text-decoration: none;
 }
 
