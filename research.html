@@ -3,24 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Research Projects</title>
+    <title>Sven Hartmann - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #317eae;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            gap: 20px; /* Space between items */
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 33%; /* Image takes 1/3 of the width */
+            border-radius: 10px;
+            object-fit: cover; /* Ensures image scales nicely */
+        }
+
+        .text-content {
+            flex-grow: 1; /* Text takes the remaining 2/3 of the space */
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .text-content a {
+            color: #317eae;
+            text-decoration: none;
+        }
+
+        .text-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column; /* Stack items vertically */
+            }
+
+            .content img {
+                max-width: 100%; /* Image spans full width */
+            }
+
+            .text-content {
+                padding-top: 10px; /* Add spacing between image and text */
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="header">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="presentation.html">Presentation</a>
+        <a href="about.html">About Me</a>
+    </div>
+
     <div class="container">
-        <h1>Your Research Projects</h1>
-        <div class="project">
-            <h2>Fog or Smog? The Impact of Uncensored Reporting on Pollution</h2>
-            <p><strong>Abstract:</strong> This paper analyzes the effect of exposure to foreign mass media on environmental awareness...</p>
-            <p><span class="underline">Presented at:</span>
-                <a href="LINK1">International Conference on "The Political Economy of Democracy and Dictatorship"</a> (February 2023),
-                <a href="LINK2">CESifo Area Conference on Energy and Climate Economics</a> (March 2023)
-                <!-- Add more conferences -->
-            </p>
+        <div class="content">
+            <!-- Image -->
+            <img src="images/Homepage_transparent.png" alt="Sven Hartmann">
+
+            <!-- Text -->
+            <div class="text-content">
+                <p>
+                    My research interests lie in labor and media economics, with a preference for working on projects that use naturally occurring data.
+                </p>
+                <p>
+                    After completing my Ph.D. at Trier University, I continued my research at Trier as a Postdoctoral Researcher at the Chair of Personnel Economics and the Institute for Labour Law and Industrial Relations in the European Union (IAAEU). In the academic year 2021/22, I was a visiting Ph.D. student at the University of Oxford.
+                </p>
+                <p>
+                    Please find the most recent version of my CV <a href="path-to-cv.pdf" target="_blank">here</a>. Don't hesitate to contact me if you have further questions or just want to discuss research ideas!
+                </p>
+            </div>
         </div>
-        <!-- Add more projects -->
     </div>
 </body>
 </html>
-
