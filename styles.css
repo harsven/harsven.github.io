@@ -49,39 +49,107 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
+    max-width: 1200px; /* Ensure max-width for larger screens */
     margin: 50px auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
-    text-align: center;
 }
 
-/* Main Heading */
+/* Main Heading - Only this is centered */
 .container h1 {
     font-size: 32px;
     font-weight: bold;
-    color: #317eae; /* Blue title color */
+    color: #317eae; /* Blue color for title */
+    margin-bottom: 20px;
+    text-align: center; /* Centered title */
+}
+
+/* Profile Image */
+.profile-content img {
+    width: 200px; /* Set fixed width for the image on the homepage */
+    max-width: 200px; /* Ensure it doesn't stretch */
+    height: auto;
+    border-radius: 10px;
     margin-bottom: 20px;
 }
 
-/* Subheading for working papers */
-h2 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    margin-top: 40px;
-    text-align: left;
+/* Profile Text Content */
+.text-content {
+    flex: 2;
+    line-height: 1.8;
+    padding-left: 20px;
+    text-align: left; /* Left align text content */
 }
 
-/* Project Container */
+/* Social Media Icons */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between icons */
+    margin-top: 30px;
+}
+
+.social-media a {
+    display: inline-block;
+    width: 60px; /* Icon size */
+    height: 60px; /* Icon size */
+    background: #fff;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-media a:hover {
+    transform: scale(1.2); /* Slightly larger on hover */
+    background-color: #f0f0f0; /* Background change on hover */
+}
+
+.social-media .icon {
+    font-size: 30px; /* Icon size */
+    line-height: 60px; /* Align icon vertically */
+    color: #555;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    /* Header adjustment for smaller screens */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Make sure the profile image size is adjusted for mobile */
+    .profile-content img {
+        width: 100%; /* Full width for mobile screens */
+    }
+
+    /* Ensure the social media icons are adjusted for mobile */
+    .social-media a {
+        width: 50px;  /* Smaller icons for mobile */
+        height: 50px; /* Smaller icons for mobile */
+    }
+
+    .social-media .icon {
+        font-size: 25px; /* Smaller icon size */
+        line-height: 50px; /* Align icon vertically */
+    }
+
+    /* Profile text content adjustments for mobile */
+    .text-content p {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+}
+
+/* Project Containers (Research Page Adjustments) */
 .project {
     background-color: #f0f0f0; /* Grey background for the project boxes */
     padding: 20px;
     margin-bottom: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
     border-radius: 8px;
-    text-align: left; /* Left-aligned text */
+    text-align: left; /* Left-aligned text for project content */
 }
 
 /* Project Titles */
@@ -122,40 +190,23 @@ h2 {
         align-items: flex-start;
     }
 
-    /* Make sure the project containers are still readable */
+    /* Project containers adjustments for mobile */
     .container h1 {
         font-size: 28px;
     }
 
     .project-title {
-        font-size: 22px; /* Slightly smaller title size for mobile */
-    }
-
-    /* Ensures social media icons are displayed correctly on smaller screens */
-    .social-media {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: nowrap; /* Ensures icons stay in one line */
-    }
-
-    .social-media a {
-        width: 50px; /* Reduced icon size for mobile */
-        height: 50px; /* Reduced icon size for mobile */
-    }
-
-    .social-media .icon {
-        font-size: 25px; /* Reduced icon size for mobile */
-        line-height: 50px; /* Align icon vertically */
-    }
-
-    /* Make project containers fill the width for smaller screens */
-    .project {
-        padding: 15px;
-        margin-bottom: 20px;
+        font-size: 22px; /* Smaller project title size for mobile */
     }
 
     .project p {
         font-size: 14px; /* Smaller font size for better readability on mobile */
     }
+
+    /* Ensure project containers are still readable */
+    .project {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
 }
+
