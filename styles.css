@@ -1,82 +1,58 @@
-/* General body and container styles */
+/* General body styles */
 body {
-    font-family: 'Lato', Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Lato', sans-serif;
+    background-color: #fff; /* White background for the entire page */
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
-/* Research title */
+/* Main title */
 h1 {
-    color: #317eae; /* Blue color */
+    color: #1a73e8; /* Blue */
+    font-size: 36px;
     text-align: center;
-    font-size: 3rem;
     margin-top: 20px;
-    margin-bottom: 40px;
 }
 
-/* Container for the project */
+/* Working papers title */
+h2 {
+    font-size: 28px;
+    color: #333;
+    text-align: left;
+    margin-top: 40px;
+}
+
+/* Project Title */
+.project-title {
+    font-size: 26px; /* Title size in blue */
+    color: #1a73e8; /* Blue */
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Project container */
 .container {
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Box shadow */
-    border-radius: 10px;
-    margin-bottom: 40px;
+    margin: 20px;
 }
 
-/* Project styling */
+/* Each project text box with shadow and gray background */
 .project {
+    background-color: #f0f0f0; /* Gray background for project boxes */
     padding: 20px;
-    background-color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Space between projects */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+    border-radius: 8px;
 }
 
-.project h2 {
-    font-size: 1.8rem;
-    color: #317eae; /* Blue color */
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.project p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
-    margin: 10px 0;
-    text-align: left;
-}
-
-/* Links styling */
-.project a {
-    color: #317eae;
+/* Text links */
+a {
+    color: #1a73e8;
     text-decoration: none;
 }
 
-.project a:hover {
-    text-decoration: underline;
-}
-
+/* Underline styling */
 .underline {
     text-decoration: underline;
-}
-
-/* Small screen styles (responsive design) */
-@media only screen and (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .project h2 {
-        font-size: 1.5rem;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    .project {
-        padding: 10px;
-    }
 }
