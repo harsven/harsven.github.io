@@ -29,7 +29,7 @@ body {
 }
 
 .hamburger {
-    display: none; /* Hidden by default */
+    display: none;
     cursor: pointer;
     flex-direction: column;
     justify-content: space-around;
@@ -43,38 +43,6 @@ body {
     height: 4px;
     background-color: white;
     border-radius: 2px;
-}
-
-/* Menu for Links */
-.menu {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-@media (max-width: 768px) {
-    .menu {
-        display: none; /* Hide menu links by default */
-        flex-direction: column;
-        gap: 10px;
-        width: 100%; /* Full width */
-        background-color: #317eae; /* Header color */
-    }
-
-    .header.active .menu {
-        display: flex; /* Show menu on toggle */
-    }
-
-    .menu a {
-        color: white;
-        padding: 10px 15px;
-        text-align: center;
-        border-bottom: 1px solid white; /* Divider between links */
-    }
-
-    .hamburger {
-        display: flex; /* Show hamburger on smaller screens */
-    }
 }
 
 /* Main container for profile section */
@@ -97,36 +65,29 @@ body {
     text-align: center; /* Centered title */
 }
 
-/* Profile Image */
+/* Profile Content */
+.profile-content {
+    display: flex;
+    flex-direction: row; /* Arrange items horizontally by default */
+    align-items: center; /* Vertically align the image and text */
+    justify-content: space-between; /* Add space between image and text */
+    gap: 20px; /* Space between image and text */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    text-align: left; /* Ensure text alignment remains consistent */
+}
+
 .profile-content img {
     width: 25%; /* Dynamic width for desktop */
     max-width: 250px; /* Cap maximum width */
     height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Add margin for smaller screens */
 }
 
-/* Profile Text Content */
 .text-content {
-    flex: 2;
+    flex: 1; /* Allow text content to take up the remaining space */
     line-height: 1.8;
-    padding-left: 20px;
-    text-align: left; /* Left align text content */
-}
-
-.text-content p {
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-.text-content a {
-    color: #317eae;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.text-content a:hover {
-    text-decoration: underline;
+    text-align: left; /* Left align the text */
 }
 
 /* Social Media Icons */
@@ -159,7 +120,7 @@ body {
     color: #555;
 }
 
-/* Media Queries for responsiveness */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     /* Header adjustment for smaller screens */
     .header {
@@ -168,13 +129,23 @@ body {
     }
 
     /* Make sure the profile image size is adjusted for mobile */
+    .profile-content {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center; /* Center-align for smaller screens */
+    }
+
     .profile-content img {
         width: 100%; /* Full width for mobile screens */
+        margin-bottom: 10px; /* Smaller gap below the image */
+    }
+
+    .text-content {
+        text-align: center; /* Center the text for smaller screens */
     }
 
     /* Ensure the social media icons are adjusted for mobile */
     .social-media a {
-        width: 50px;  /* Smaller icons for mobile */
+        width: 50px; /* Smaller icons for mobile */
         height: 50px; /* Smaller icons for mobile */
     }
 
@@ -229,8 +200,9 @@ body {
     text-decoration: underline;
 }
 
-/* Responsive Projects for smaller screens */
+/* Media Queries for responsiveness */
 @media (max-width: 768px) {
+    /* Project containers adjustments for mobile */
     .container h1 {
         font-size: 28px;
     }
