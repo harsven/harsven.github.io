@@ -65,14 +65,14 @@ body {
     text-align: center; /* Centered title */
 }
 
-/* Profile Image */
 .profile-content img {
-    width: 200px; /* Set fixed width for the image on the homepage */
-    max-width: 200px; /* Ensure it doesn't stretch */
-    height: auto;
+    width: 25%; /* Dynamic width for desktop */
+    max-width: 250px; /* Upper limit for the image size */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
     margin-bottom: 20px;
 }
+
 
 /* Profile Text Content */
 .text-content {
