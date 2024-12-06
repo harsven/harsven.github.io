@@ -6,10 +6,23 @@
     <title>Presentations</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- Include Menu from menu.html using AJAX -->
-    <div id="menu-container"></div>
+    <!-- Menu for all pages -->
+    <div class="header">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="presentation.html">Presentations</a>
+        <a href="about.html">About Me</a>
+    </div>
 
     <div class="container">
         <h1>Conference and Seminar Talks</h1>
@@ -105,10 +118,10 @@
     </div>
 
     <script>
-        // Load menu.html into the page dynamically using AJAX
-        document.getElementById('menu-container').innerHTML = `
-            <object type="text/html" data="menu.html"></object>
-        `;
+        function toggleMenu() {
+            const header = document.querySelector('.header');
+            header.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
