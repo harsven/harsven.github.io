@@ -1,9 +1,10 @@
-/* General Body Styling */
+/* Default body background color */
 body {
-    font-family: 'Lato', Arial, sans-serif;
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    color: black; /* Default text color */
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9; /* Light grey background for the page */
 }
 
 /* Header Styling */
