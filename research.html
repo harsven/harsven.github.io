@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Menu for all pages -->
+    <div class="header">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="presentation.html">Presentations</a>
+        <a href="about.html">About Me</a>
+    </div>
+
     <div class="container">
         <h1>Research</h1>
         <h2>Working Papers</h2>
@@ -39,5 +53,12 @@
             </p>
         </div>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const header = document.querySelector('.header');
+            header.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
