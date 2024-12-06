@@ -6,6 +6,48 @@
     <title>Presentations</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add this custom CSS for styling */
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+        h2 {
+            color: #317eae;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .upcoming-conference {
+            display: flex;
+            align-items: flex-start;
+        }
+        .upcoming-conference::before {
+            content: "📌";
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        .conference-item {
+            font-size: 1em;
+        }
+        .conference-name {
+            color: #317eae;
+            font-weight: normal;
+        }
+        .conference-details {
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -14,93 +56,366 @@
         <!-- Upcoming Presentations -->
         <h2>Upcoming Presentations</h2>
         <ul>
-            <li><strong>📌 SOEP Brown Bag Seminar</strong><br>January 22, DIW Berlin, Berlin, Germany</li>
-            <li><strong>📌 AASLE Conference</strong><br>December 12 – 14, Chulalongkorn University, Bangkok, Thailand</li>
+            <li class="upcoming-conference">
+                <div class="conference-item">
+                    <span class="conference-name">SOEP Brown Bag Seminar</span>
+                    <span class="conference-details">January 22, DIW Berlin, Berlin, Germany</span>
+                </div>
+            </li>
+            <li class="upcoming-conference">
+                <div class="conference-item">
+                    <span class="conference-name">AASLE Conference</span>
+                    <span class="conference-details">December 12 – 14, Chulalongkorn University, Bangkok, Thailand</span>
+                </div>
+            </li>
         </ul>
 
         <!-- Presentations by Year -->
         <h2>2024</h2>
         <ul>
-            <li><strong>AIEL Conference</strong><br>University of Naples, Naples, Italy</li>
-            <li><strong>EALE Conference</strong><br>NHH - Norwegian School of Economics, Bergen, Norway</li>
-            <li><strong>International SOEP User Conference</strong><br>Berlin-Brandenburg Academy of Sciences and Humanities, Berlin, Germany</li>
-            <li><strong>SOEP Brown Bag Seminar</strong><br>DIW Berlin, Berlin, Germany</li>
-            <li><strong>ASSA Annual Meeting</strong><br>San Antonio, U.S.</li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">AIEL Conference</span>
+                    <span class="conference-details">University of Naples, Naples, Italy</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">EALE Conference</span>
+                    <span class="conference-details">NHH - Norwegian School of Economics, Bergen, Norway</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">International SOEP User Conference</span>
+                    <span class="conference-details">Berlin-Brandenburg Academy of Sciences and Humanities, Berlin, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">SOEP Brown Bag Seminar</span>
+                    <span class="conference-details">DIW Berlin, Berlin, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">ASSA Annual Meeting</span>
+                    <span class="conference-details">San Antonio, U.S.</span>
+                </div>
+            </li>
         </ul>
 
         <h2>2023</h2>
         <ul>
-            <li><strong>AASLE Conference</strong><br>National Taiwan University, Taipeh, Taiwan</li>
-            <li><strong>VfS Annual Meeting</strong><br>University of Regensburg, Regensburg, Germany</li>
-            <li><strong>EEA-ESEM Congress</strong><br>Barcelona School of Economics, Barcelona, Spain</li>
-            <li><strong>Asian Meeting of the Econometric Society</strong><br>Online presentation</li>
-            <li><strong>36th Annual Conference of the European Society for Population Economics</strong><br>Institute of Economic Sciences, Belgrade, Serbia</li>
-            <li><strong>RES & SES 2023 Annual Conference</strong><br>University of Glasgow, Glasgow, UK</li>
-            <li><strong>Meeting of the European Public Choice Society</strong><br>University of Hannover, Hannover, Germany</li>
-            <li><strong>CESifo Area Conference on Energy and Climate Economics</strong><br>ifo Institute, Munich, Germany</li>
-            <li><strong>International Conference on "The Political Economy of Democracy and Dictatorship"</strong><br>University of Münster, Münster, Germany</li>
-            <li><strong>ASSA Annual Meeting</strong><br>New Orleans, U.S.</li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">AASLE Conference</span>
+                    <span class="conference-details">National Taiwan University, Taipeh, Taiwan</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">VfS Annual Meeting</span>
+                    <span class="conference-details">University of Regensburg, Regensburg, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">EEA-ESEM Congress</span>
+                    <span class="conference-details">Barcelona School of Economics, Barcelona, Spain</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Asian Meeting of the Econometric Society</span>
+                    <span class="conference-details">Online presentation</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">36th Annual Conference of the European Society for Population Economics</span>
+                    <span class="conference-details">Institute of Economic Sciences, Belgrade, Serbia</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">RES & SES 2023 Annual Conference</span>
+                    <span class="conference-details">University of Glasgow, Glasgow, UK</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Meeting of the European Public Choice Society</span>
+                    <span class="conference-details">University of Hannover, Hannover, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">CESifo Area Conference on Energy and Climate Economics</span>
+                    <span class="conference-details">ifo Institute, Munich, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">International Conference on "The Political Economy of Democracy and Dictatorship"</span>
+                    <span class="conference-details">University of Münster, Münster, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">ASSA Annual Meeting</span>
+                    <span class="conference-details">New Orleans, U.S.</span>
+                </div>
+            </li>
         </ul>
 
         <h2>2022</h2>
         <ul>
-            <li><strong>AASLE Conference</strong><br>Online presentation</li>
-            <li><strong>CESifo Area Conference: Economics of Digitization</strong><br>ifo Institute, Munich, Germany</li>
-            <li><strong>VfS Annual Meeting</strong><br>University of Basel, Basel, Switzerland</li>
-            <li><strong>EALE Conference</strong><br>University of Padova, Padua, Italy</li>
-            <li><strong>Asian Meeting of the Econometric Society in East and South-East Asia</strong><br>Online presentation</li>
-            <li><strong>14th International German Socio-Economic Panel User Conference</strong><br>German Institute for Economic Research, Berlin, Germany</li>
-            <li><strong>Asian Meeting of the Econometric Society</strong><br>Online presentation</li>
-            <li><strong>35th Annual Conference of the European Society for Population Economics</strong><br>University of Calabria, Rende, Italy</li>
-            <li><strong>Scottish Economic Society Annual Conference</strong><br>University of Glasgow, Glasgow, UK</li>
-            <li><strong>Seminar on Labour Economics of the University of Bath</strong><br>Online talk</li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">AASLE Conference</span>
+                    <span class="conference-details">Online presentation</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">CESifo Area Conference: Economics of Digitization</span>
+                    <span class="conference-details">ifo Institute, Munich, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">VfS Annual Meeting</span>
+                    <span class="conference-details">University of Basel, Basel, Switzerland</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">EALE Conference</span>
+                    <span class="conference-details">University of Padova, Padua, Italy</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Asian Meeting of the Econometric Society in East and South-East Asia</span>
+                    <span class="conference-details">Online presentation</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">14th International German Socio-Economic Panel User Conference</span>
+                    <span class="conference-details">German Institute for Economic Research, Berlin, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Asian Meeting of the Econometric Society</span>
+                    <span class="conference-details">Online presentation</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">35th Annual Conference of the European Society for Population Economics</span>
+                    <span class="conference-details">University of Calabria, Rende, Italy</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Scottish Economic Society Annual Conference</span>
+                    <span class="conference-details">University of Glasgow, Glasgow, UK</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Seminar on Labour Economics of the University of Bath</span>
+                    <span class="conference-details">Online talk</span>
+                </div>
+            </li>
         </ul>
 
         <h2>2021</h2>
         <ul>
-            <li><strong>EP@P Workshop "Economics & Politics at Paris"</strong><br>Sciences Po Paris, Paris, France</li>
-            <li><strong>19th Brucchi Luchino Labor Economics Workshop</strong><br>USI Università della Svizzera italiana, Lugano, Switzerland</li>
-            <li><strong>36th Conference of the Italian Association of Labour Economists</strong><br>Online conference</li>
-            <li><strong>Australasian Meeting of the Econometric Society</strong><br>Online conference</li>
-            <li><strong>China Meeting of the Econometric Society</strong><br>Online conference</li>
-            <li><strong>14th Labour Economics Meeting</strong><br>Online conference</li>
-            <li><strong>Asian Meeting of the Econometric Society</strong><br>Online conference</li>
-            <li><strong>34th Annual Conference of the European Society for Population Economics</strong><br>Online conference</li>
-            <li><strong>IAREP-SABE Conference</strong><br>Online conference</li>
-            <li><strong>26th Annual Meeting of the Society of Labor Economists</strong><br>Online conference</li>
-            <li><strong>Scottish Economic Society Annual Conference</strong><br>Online conference</li>
-            <li><strong>Meeting of the European Public Choice Society</strong><br>Online conference</li>
-            <li><strong>ASSA Annual Meeting</strong><br>Online conference</li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">EP@P Workshop "Economics & Politics at Paris"</span>
+                    <span class="conference-details">Sciences Po Paris, Paris, France</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">19th Brucchi Luchino Labor Economics Workshop</span>
+                    <span class="conference-details">USI Università della Svizzera italiana, Lugano, Switzerland</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">36th Conference of the Italian Association of Labour Economists</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Australasian Meeting of the Econometric Society</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">China Meeting of the Econometric Society</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">14th Labour Economics Meeting</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Asian Meeting of the Econometric Society</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">34th Annual Conference of the European Society for Population Economics</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">IAREP-SABE Conference</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">26th Annual Meeting of the Society of Labor Economists</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Scottish Economic Society Annual Conference</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Meeting of the European Public Choice Society</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">ASSA Annual Meeting</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
         </ul>
 
         <h2>2020</h2>
         <ul>
-            <li><strong>22th INFER Annual Conference</strong><br>Online conference</li>
-            <li><strong>VfS Annual Meeting</strong><br>Online conference</li>
-            <li><strong>35th Conference of the Italian Association of Labour Economists</strong><br>Online conference</li>
-            <li><strong>SABE Annual Conference</strong><br>Online conference</li>
-            <li><strong>ASSA Annual Meeting</strong><br>San Diego, U.S.</li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">22th INFER Annual Conference</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">VfS Annual Meeting</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">35th Conference of the Italian Association of Labour Economists</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">SABE Annual Conference</span>
+                    <span class="conference-details">Online conference</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">ASSA Annual Meeting</span>
+                    <span class="conference-details">San Diego, U.S.</span>
+                </div>
+            </li>
         </ul>
 
         <h2>2019</h2>
         <ul>
-            <li><strong>VfS Annual Meeting</strong><br>Leipzig University, Leipzig, Germany</li>
-            <li><strong>34th Conference of the Italian Association of Labour Economists</strong><br>Università del Piemonte Orientale, Novara, Italy</li>
-            <li><strong>IAREP-SABE Conference</strong><br>Dublin City University, Dublin, Ireland</li>
-            <li><strong>Young Economists' Meeting</strong><br>Masaryk University, Brno, Czech Republic</li>
-            <li><strong>24th Annual Meeting of the Society of Labor Economists</strong><br>Arlington, U.S.</li>
-            <li><strong>Meeting of the European Public Choice Society</strong><br>Hebrew University, Jerusalem, Israel</li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">VfS Annual Meeting</span>
+                    <span class="conference-details">Leipzig University, Leipzig, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">34th Conference of the Italian Association of Labour Economists</span>
+                    <span class="conference-details">Università del Piemonte Orientale, Novara, Italy</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">IAREP-SABE Conference</span>
+                    <span class="conference-details">Dublin City University, Dublin, Ireland</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Young Economists' Meeting</span>
+                    <span class="conference-details">Masaryk University, Brno, Czech Republic</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">24th Annual Meeting of the Society of Labor Economists</span>
+                    <span class="conference-details">Arlington, U.S.</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">Meeting of the European Public Choice Society</span>
+                    <span class="conference-details">Hebrew University, Jerusalem, Israel</span>
+                </div>
+            </li>
         </ul>
 
         <h2>2018</h2>
         <ul>
-            <li><strong>20th INFER Annual Conference</strong><br>University of Goettingen, Goettingen, Germany</li>
-            <li><strong>VfS Annual Meeting</strong><br>University of Freiburg, Freiburg, Germany</li>
-            <li><strong>33rd Annual Congress of the European Economic Association</strong><br>University of Cologne, Cologne, Germany</li>
-            <li><strong>21st Applied Economics Meeting</strong><br>University of Alcalá, Alcalá de Henares, Spain</li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">20th INFER Annual Conference</span>
+                    <span class="conference-details">University of Goettingen, Goettingen, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">VfS Annual Meeting</span>
+                    <span class="conference-details">University of Freiburg, Freiburg, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">33rd Annual Congress of the European Economic Association</span>
+                    <span class="conference-details">University of Cologne, Cologne, Germany</span>
+                </div>
+            </li>
+            <li>
+                <div class="conference-item">
+                    <span class="conference-name">21st Applied Economics Meeting</span>
+                    <span class="conference-details">University of Alcalá, Alcalá de Henares, Spain</span>
+                </div>
+            </li>
         </ul>
-
-        <h2>Maybe we've met before?</h2>
     </div>
 </body>
 </html>
