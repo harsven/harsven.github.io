@@ -28,14 +28,16 @@ body {
     text-decoration: underline;
 }
 
+/* Hamburger Menu */
 .hamburger {
-    display: none;
+    display: none; /* Hidden by default for larger screens */
     cursor: pointer;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 30px;
     height: 25px;
+    z-index: 1000; /* Ensure it stays on top */
 }
 
 .hamburger div {
@@ -43,6 +45,14 @@ body {
     height: 4px;
     background-color: white;
     border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Active state for menu */
+.header.active a {
+    display: block; /* Show links when the menu is active */
+    margin: 10px 0;
+    font-size: 18px;
 }
 
 /* Main container for profile section */
@@ -128,7 +138,24 @@ body {
         align-items: flex-start;
     }
 
-    /* Make sure the profile image size is adjusted for mobile */
+    /* Show hamburger menu */
+    .hamburger {
+        display: flex; /* Display the hamburger menu on small screens */
+    }
+
+    /* Hide the navigation links by default */
+    .header a {
+        display: none;
+    }
+
+    /* When active, display links in a vertical stack */
+    .header.active a {
+        display: block;
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    /* Profile Content Stack */
     .profile-content {
         flex-direction: column; /* Stack image and text vertically */
         text-align: center; /* Center-align for smaller screens */
@@ -157,67 +184,5 @@ body {
     /* Profile text content adjustments for mobile */
     .text-content p {
         font-size: 14px; /* Smaller font size for mobile */
-    }
-}
-
-/* Project Containers (Research Page Adjustments) */
-.project {
-    background-color: #f0f0f0; /* Grey background for the project boxes */
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
-    border-radius: 8px;
-    text-align: left; /* Left-aligned text for project content */
-}
-
-/* Project Titles */
-.project-title {
-    font-size: 24px; /* Smaller project title size */
-    color: #317eae; /* Blue color for project titles */
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-/* Abstract and Text Content */
-.project p {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-/* Links in the text (conference links) */
-.project a {
-    color: #317eae;
-    text-decoration: none;
-}
-
-.project a:hover {
-    text-decoration: underline;
-}
-
-/* Underlined Text */
-.underline {
-    text-decoration: underline;
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-    /* Project containers adjustments for mobile */
-    .container h1 {
-        font-size: 28px;
-    }
-
-    .project-title {
-        font-size: 22px; /* Smaller project title size for mobile */
-    }
-
-    .project p {
-        font-size: 14px; /* Smaller font size for better readability on mobile */
-    }
-
-    /* Ensure project containers are still readable */
-    .project {
-        padding: 15px;
-        margin-bottom: 20px;
     }
 }
