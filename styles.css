@@ -6,7 +6,7 @@ body {
     background-color: #f9f9f9; /* Light grey background for the page */
 }
 
-/* Header styling */
+/* Header Styling */
 .header {
     display: flex;
     justify-content: space-between;
@@ -28,16 +28,15 @@ body {
     text-decoration: underline;
 }
 
-/* Hamburger Menu */
+/* Hamburger Menu Styling */
 .hamburger {
-    display: none; /* Hidden by default for larger screens */
+    display: none;
     cursor: pointer;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 30px;
     height: 25px;
-    z-index: 1000; /* Ensure it stays on top */
 }
 
 .hamburger div {
@@ -45,73 +44,79 @@ body {
     height: 4px;
     background-color: white;
     border-radius: 2px;
-    transition: all 0.3s ease;
 }
 
-/* Active state for menu */
-.header.active a {
-    display: block; /* Show links when the menu is active */
-    margin: 10px 0;
-    font-size: 18px;
+/* Show hamburger menu on small screens */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header a {
+        display: none;
+        margin: 10px 0;
+    }
+
+    .header.active a {
+        display: block;
+    }
 }
 
-/* Main container for profile section */
+/* General Container Styling */
 .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px; /* Ensure max-width for larger screens */
+    max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
 }
 
-/* Main Heading - Only this is centered */
+/* Page Titles */
 .container h1 {
     font-size: 32px;
     font-weight: bold;
-    color: #317eae; /* Blue color for title */
+    color: #317eae;
     margin-bottom: 20px;
-    text-align: center; /* Centered title */
+    text-align: center;
 }
 
-/* Profile Content */
+/* Profile Section Styling */
 .profile-content {
     display: flex;
-    flex-direction: row; /* Arrange items horizontally by default */
-    align-items: center; /* Vertically align the image and text */
-    justify-content: space-between; /* Add space between image and text */
-    gap: 20px; /* Space between image and text */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    text-align: left; /* Ensure text alignment remains consistent */
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures wrapping for small screens */
 }
 
 .profile-content img {
-    width: 25%; /* Dynamic width for desktop */
-    max-width: 250px; /* Cap maximum width */
-    height: auto; /* Maintain aspect ratio */
+    width: 200px;
+    height: auto;
     border-radius: 10px;
-    margin-bottom: 20px; /* Add margin for smaller screens */
 }
 
 .text-content {
-    flex: 1; /* Allow text content to take up the remaining space */
+    flex: 1;
     line-height: 1.8;
-    text-align: left; /* Left align the text */
+    text-align: left;
 }
 
 /* Social Media Icons */
 .social-media {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Space between icons */
+    gap: 20px;
     margin-top: 30px;
 }
 
 .social-media a {
     display: inline-block;
-    width: 60px; /* Icon size */
-    height: 60px; /* Icon size */
+    width: 60px;
+    height: 60px;
     background: #fff;
     text-align: center;
     border-radius: 50%;
@@ -120,69 +125,92 @@ body {
 }
 
 .social-media a:hover {
-    transform: scale(1.2); /* Slightly larger on hover */
-    background-color: #f0f0f0; /* Background change on hover */
+    transform: scale(1.2);
+    background-color: #f0f0f0;
 }
 
 .social-media .icon {
-    font-size: 30px; /* Icon size */
-    line-height: 60px; /* Align icon vertically */
+    font-size: 30px;
+    line-height: 60px;
     color: #555;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for Homepage */
 @media (max-width: 768px) {
-    /* Header adjustment for smaller screens */
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    /* Show hamburger menu */
-    .hamburger {
-        display: flex; /* Display the hamburger menu on small screens */
-    }
-
-    /* Hide the navigation links by default */
-    .header a {
-        display: none;
-    }
-
-    /* When active, display links in a vertical stack */
-    .header.active a {
-        display: block;
-        margin: 10px 0;
-        font-size: 18px;
-    }
-
-    /* Profile Content Stack */
     .profile-content {
-        flex-direction: column; /* Stack image and text vertically */
-        text-align: center; /* Center-align for smaller screens */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
     }
 
     .profile-content img {
-        width: 100%; /* Full width for mobile screens */
-        margin-bottom: 10px; /* Smaller gap below the image */
+        width: 100%; /* Full width on smaller screens */
+        max-width: 300px;
     }
 
     .text-content {
-        text-align: center; /* Center the text for smaller screens */
+        text-align: center; /* Center text on smaller screens */
     }
 
-    /* Ensure the social media icons are adjusted for mobile */
     .social-media a {
-        width: 50px; /* Smaller icons for mobile */
-        height: 50px; /* Smaller icons for mobile */
+        width: 50px;
+        height: 50px;
     }
 
     .social-media .icon {
-        font-size: 25px; /* Smaller icon size */
-        line-height: 50px; /* Align icon vertically */
+        font-size: 25px;
+        line-height: 50px;
+    }
+}
+
+/* Research Page Specific Styling */
+.container h2 {
+    font-size: 28px;
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.project {
+    margin-bottom: 40px;
+}
+
+.project-title {
+    font-size: 24px;
+    color: #317eae;
+    margin-bottom: 10px;
+}
+
+.project p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.project .underline {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.project a {
+    color: #317eae;
+    text-decoration: none;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments for Research Page */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
     }
 
-    /* Profile text content adjustments for mobile */
-    .text-content p {
-        font-size: 14px; /* Smaller font size for mobile */
+    .project p {
+        font-size: 14px;
+    }
+
+    .project-title {
+        font-size: 20px;
     }
 }
