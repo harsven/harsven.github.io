@@ -227,6 +227,27 @@ body {
     }
 }
 
+
+/* Add any specific styles for the slider here */
+.abstract-slider {
+    display: inline-block;
+    cursor: pointer;
+    color: #317eae; /* Blue color for the clickable text */
+    font-weight: bold;
+}
+
+.abstract-content {
+    display: none; /* Initially hide the full abstract */
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px; /* Optional: Adds space between title and content */
+}
+
+.abstract-slider.open + .abstract-content {
+    display: block; /* Show full abstract when clicked */
+}
+
+
 /* Footer Styling */
 .footer {
     background-color: #317eae; /* Matches header background */
