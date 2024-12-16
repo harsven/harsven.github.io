@@ -1,4 +1,4 @@
-/* General Styles (unchanged) */
+/* General Body Styling */
 body {
     background-color: white;
     font-family: 'Lato', sans-serif;
@@ -7,17 +7,99 @@ body {
     padding: 0;
 }
 
-/* Abstract Toggle Styles */
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #317eae;
+    padding: 15px;
+    position: relative;
+}
+
+.header a {
+    text-decoration: none;
+    color: white;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+/* Hamburger Menu Styling */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header a {
+        display: none;
+        margin: 10px 0;
+    }
+
+    .header.active a {
+        display: block;
+    }
+}
+
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* Project Styling */
+.project {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-title {
+    font-size: 24px;
+    color: #317eae;
+    font-weight: bold;
+}
+
+/* Abstract Styling */
 .toggle-button {
     background-color: #317eae;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px;
     font-size: 14px;
-    cursor: pointer;
     border-radius: 5px;
-    margin: 10px 0;
-    display: inline-block;
+    cursor: pointer;
 }
 
 .toggle-button:hover {
@@ -27,21 +109,3 @@ body {
 .abstract.hidden {
     display: none;
 }
-
-/* Project Styles */
-.project {
-    background-color: #f0f0f0;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    text-align: left;
-}
-
-.project h3 {
-    font-size: 24px;
-    color: #317eae;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-/* Other styles unchanged */
