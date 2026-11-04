@@ -1,0 +1,34 @@
+
+:root{--bg:#fbfcfc;--ink:#1c2530;--muted:#5b6773;--line:#dde3e8;--accent:#1f5f7a}
+@media (prefers-color-scheme:dark){:root{--bg:#14191e;--ink:#e6ebef;--muted:#9aa7b2;--line:#2b343c;--accent:#7cc0dc}}
+*{box-sizing:border-box}
+html{scroll-padding-top:4rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.65 Charter,"Iowan Old Style","Palatino Linotype",Georgia,serif}
+header{display:flex;flex-wrap:wrap;gap:.5rem 2rem;align-items:baseline;justify-content:space-between;max-width:56rem;margin:0 auto;padding:1.5rem 1.25rem;border-bottom:1px solid var(--line)}
+.name{font-size:1.35rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:.01em}
+nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.95rem}
+nav a{color:var(--muted);text-decoration:none;padding:.15rem 0;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink)}
+nav a[aria-current=page]{color:var(--ink);border-bottom-color:var(--accent)}
+main{max-width:56rem;margin:0 auto;padding:2rem 1.25rem 3rem}
+h1{font-size:2rem;line-height:1.2;margin:0 0 1rem}
+h2{font-size:1.3rem;margin:2.5rem 0 .75rem;padding-top:.75rem;border-top:1px solid var(--line)}
+a{color:var(--accent);text-underline-offset:.15em}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.hero{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:2rem;align-items:start}
+.hero img{width:100%;height:auto;border-radius:4px;background:var(--line)}
+.links{font-family:system-ui,sans-serif;font-size:.95rem;margin:.25rem 0 1rem}
+@media(max-width:40rem){.hero{grid-template-columns:1fr}.hero img{max-width:220px}}
+.list{padding-left:1.25rem;margin:0}
+ul.list{list-style:disc}
+.list li{margin:0 0 1rem;max-width:44rem}
+.list li::marker{color:var(--muted)}
+.t{font-weight:600}
+.co,.v,.x{display:block;color:var(--muted);font-size:.95rem;line-height:1.5}
+details{margin-top:.35rem;font-size:.95rem}
+summary{cursor:pointer;color:var(--accent)}
+details p{margin:.5rem 0}
+figure{margin:1.5rem 0}
+figure img{max-width:100%;height:auto;border-radius:4px}
+figcaption{color:var(--muted);font-size:.9rem;margin-top:.4rem}
+footer{max-width:56rem;margin:0 auto;padding:1.25rem;border-top:1px solid var(--line);color:var(--muted);font:.9rem system-ui,sans-serif}
