@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Roboto', sans-serif; background-color: #232935; color: #e8eaee; }
+        
+        #main-container {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: space-between;
+            width: 100%; height: 450px; padding: 5px; box-sizing: border-box;
+        }
+
+        /* Portfolio-Blau für die Überschrift */
+        h2 { margin: 0 0 5px 0; color: #c87984; font-weight: 700; font-size: 24px; }
+        
+        .game-area { flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%; }
+        
+        /* Canvas Rahmen angepasst auf #c87984 */
+        canvas { border: 2px solid #c87984; background: #232935; max-width: 100%; height: auto; }
+        
+        .controls { text-align: center; width: 100%; margin-top: 5px; }
+        #instruction { font-size: 11px; color: #9ba1ad; margin: 5px 0 0 0; }
+        
+        /* Button Styling */
+        .btn { padding: 8px 25px; border: none; border-radius: 5px; color: #1b1f28; font-weight: bold; cursor: pointer; min-width: 110px; font-family: 'Roboto'; font-size: 14px; }
+        .play-mode { background-color: #c87984; } /* Dein Blau */
+        .stop-mode { background-color: #dc3545; color: #fff; } /* Standard Rot für Stop */
+        
+        .github-link { display: inline-block; margin-top: 4px; color: #c87984; font-size: 13px; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div id="main-container">
+    <h2>Reflex Timer</h2>
+    <div class="game-area">
+        <canvas id="timerCanvas" width="300" height="200"></canvas>
+    </div>
+    <div class="controls">
+        <button id="toggleBtn" class="btn play-mode" onclick="toggleGame()">Play</button>
+        <p id="instruction">Stop on .0 for points! | Total tries: 5</p>
+        <a href="https://github.com/harsven/python-games/tree/main/Reflex-Timer" target="_blank" class="github-link">View Python Code on GitHub</a>
+    </div>
+</div>
+
+<script>
+    // --- DOM Elemente ---
+    const canvas = document.getElementById("timerCanvas"); 
+    const ctx = canvas.getContext("2d"); 
+    const btn = document.getElementById("toggleBtn");
+
+    // --- Spiel Variablen ---
+    let isRunning = false; 
+    let a = 0;      // Minuten
+    let b = 0;      // Sekunden
+    let c = 0;      // Zehntelsekunden (Deciseconds)
+    let chances = 0; // Erfolgreiche Stops auf ".0"
+    let total = 0;   // Gesamte Versuche
+    let timer;       // Variable für das Interval
+
+    /**
+     * Startet oder stoppt den Timer. 
+     * Prüft beim Stoppen, ob die Zehntelsekunde genau 0 war.
+     */
+    function toggleGame() {
+        if (!isRunning) {
+            // Spiel starten
+            isRunning = true;
+            btn.innerText = "Stop";
+            btn.className = "btn stop-mode";
+            // Alle 100ms die Funktion "tick" aufrufen
+            timer = setInterval(tick, 100); 
+        } else {
+            // Spiel stoppen
+            isRunning = false;
+            btn.innerText = "Play";
+            btn.className = "btn play-mode";
+            clearInterval(timer); // Timer anhalten
+            
+            total++; // Versuchszähler erhöhen
+            
+            // Punkt vergeben, wenn bei .0 gestoppt wurde
+            if (c === 0) {
+                chances++;
+            }
+            
+            // Wenn 5 Versuche erreicht sind, Spiel nach 2 Sek. zurücksetzen
+            if (total >= 5) {
+                setTimeout(resetFull, 2000);
+            }
+        }
+    }
+
+    /**
+     * Setzt alle Werte auf Null zurück (wird nach 5 Runden aufgerufen).
+     */
+    function resetFull() {
+        a = 0; b = 0; c = 0; 
+        chances = 0; 
+        total = 0; 
+        draw(); 
+    }
+
+    /**
+     * Erhöht die Zeiteinheiten. 
+     * Logik: 10 Zehntel = 1 Sekunde | 60 Sekunden = 1 Minute
+     */
+    function tick() {
+        c++; 
+        if (c === 10) { 
+            b++; 
+            c = 0; 
+            if (b === 60) { 
+                a++; 
+                b = 0; 
+            } 
+        } 
+        draw(); 
+    }
+
+    /**
+     * Zeichnet die aktuelle Zeit und den Punktestand auf den Canvas.
+     */
+    function draw() {
+        // Hintergrund löschen
+        ctx.clearRect(0, 0, 300, 200); 
+        
+        // Farbe für Text setzen (Portfolio-Blau)
+        ctx.fillStyle = "#c87984"; 
+        ctx.textAlign = "center";
+        
+        // Punktestand oben rechts (Erfolge / Versuche)
+        ctx.font = "20px Roboto"; 
+        ctx.fillText(chances + " / " + total, 250, 30);
+        
+        // Timer Anzeige im Format MM:SS.Z
+        ctx.font = "bold 45px Roboto"; 
+        const timeString = `${a.toString().padStart(2,'0')}:${b.toString().padStart(2,'0')}.${c}`;
+        ctx.fillText(timeString, 150, 110);
+        
+        // Feedback-Nachricht nach 5 Versuchen
+        ctx.font = "italic 16px Roboto";
+        if (total === 5) {
+            let msg = "";
+            if (chances < 3) msg = "Keep practicing!";
+            else if (chances < 5) msg = "Good reflexes!";
+            else msg = "Incredible!";
+            
+            ctx.fillText(msg, 150, 160);
+        }
+    }
+
+    // Initiales Zeichnen beim Laden
+    draw();
+</script>
+
+</body>
+</html>

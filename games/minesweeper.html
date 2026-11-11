@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Roboto', sans-serif; background-color: #232935; color: #e8eaee; overflow: hidden; }
+        #main-container {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center;
+            width: 100%; height: 450px; padding: 10px; box-sizing: border-box;
+        }
+        h2 { margin: 0 0 15px 0; color: #c87984; font-weight: 700; font-size: 24px; }
+        .game-area { display: flex; align-items: center; justify-content: center; width: 100%; position: relative; margin-bottom: 15px; }
+        canvas { border: 2px solid #c87984; background: #232935; max-width: 100%; height: auto; cursor: pointer; border-radius: 4px; }
+        .controls { text-align: center; width: 100%; }
+        .btn-container { display: flex; gap: 10px; justify-content: center; align-items: center; }
+        .btn { 
+            padding: 10px 20px; border: none; border-radius: 5px; color: #1b1f28; 
+            font-weight: bold; cursor: pointer; min-width: 120px; height: 40px;
+            font-family: 'Roboto'; font-size: 14px; background-color: #c87984;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+        #instruction { font-size: 11px; color: #9ba1ad; margin: 10px 0 5px 0; }
+        .github-link { display: inline-block; color: #c87984; font-size: 13px; text-decoration: underline; }
+        
+        /* Die rote Farbe nur für den Reset-Zustand, um Konsistenz mit deinen anderen Apps zu wahren */
+        .stop-mode { background-color: #dc3545 !important; color: #fff !important; } 
+    </style>
+</head>
+<body>
+<div id="main-container">
+    <h2>Minesweeper</h2>
+    <div class="game-area">
+        <canvas id="msCanvas" width="300" height="300"></canvas>
+    </div>
+    <div class="controls">
+        <div class="btn-container">
+            <button id="toggleBtn" class="btn" onclick="resetGame()">Play</button>
+            <button id="modeBtn" class="btn" onclick="toggleMode()">Mode: Open</button>
+        </div>
+        <p id="instruction">Right-click or use Mode-button to set flags!</p>
+        <a href="https://github.com/harsven/python-games/tree/main/Minesweeper" target="_blank" class="github-link">View Python Code on GitHub</a>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById("msCanvas");
+    const ctx = canvas.getContext("2d");
+    const btn = document.getElementById("toggleBtn");
+    const modeBtn = document.getElementById("modeBtn");
+
+    const ROWS = 10, COLS = 10, MINES = 15, SIZE = 30;
+    let board = [], revealed = [], flags = [], gameStarted = false, gameOver = false, won = false, useFlagMode = false;
+
+    function resetGame() {
+        board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+        revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));
+        flags = Array.from({length: ROWS}, () => Array(COLS).fill(false));
+        gameStarted = false; gameOver = false; won = false;
+        btn.innerText = "Play"; btn.classList.remove("stop-mode");
+        placeMines(); calcNumbers(); draw();
+    }
+
+    function placeMines() {
+        let count = 0;
+        while (count < MINES) {
+            let r = Math.floor(Math.random()*ROWS), c = Math.floor(Math.random()*COLS);
+            if (board[r][c] !== -1) { board[r][c] = -1; count++; }
+        }
+    }
+
+    function calcNumbers() {
+        for(let r=0; r<ROWS; r++) {
+            for(let c=0; c<COLS; c++) {
+                if (board[r][c] === -1) continue;
+                for(let i=-1; i<=1; i++) for(let j=-1; j<=1; j++) {
+                    let nr = r+i, nc = c+j;
+                    if (nr>=0 && nr<ROWS && nc>=0 && nc<COLS && board[nr][nc]===-1) board[r][c]++;
+                }
+            }
+        }
+    }
+
+    function toggleMode() {
+        useFlagMode = !useFlagMode;
+        modeBtn.innerText = useFlagMode ? "Mode: Flag" : "Mode: Open";
+    }
+
+    function handleInteraction(r, c, isRightClick) {
+        if (gameOver) return;
+        if (!gameStarted) { gameStarted = true; btn.innerText = "Restart"; btn.classList.add("stop-mode"); }
+
+        if (isRightClick || useFlagMode) {
+            if (!revealed[r][c]) flags[r][c] = !flags[r][c];
+        } else {
+            if (!flags[r][c]) reveal(r, c);
+        }
+        checkWin();
+        draw();
+    }
+
+    function reveal(r, c) {
+        if (r<0 || r>=ROWS || c<0 || c>=COLS || revealed[r][c] || flags[r][c]) return;
+        revealed[r][c] = true;
+        if (board[r][c] === -1) { gameOver = true; won = false; revealAll(); }
+        else if (board[r][c] === 0) {
+            for(let i=-1; i<=1; i++) for(let j=-1; j<=1; j++) reveal(r+i, c+j);
+        }
+    }
+
+    function checkWin() {
+        if (gameOver && !won) return;
+        let count = 0;
+        for(let r=0; r<ROWS; r++) for(let c=0; c<COLS; c++) if(!revealed[r][c]) count++;
+        if (count === MINES) { won = true; gameOver = true; revealAll(); }
+    }
+
+    function revealAll() { 
+        for(let r=0; r<ROWS; r++) for(let c=0; c<COLS; c++) revealed[r][c] = true; 
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX - rect.left) * (300 / rect.width);
+        const y = (e.clientY - rect.top) * (300 / rect.height);
+        handleInteraction(Math.floor(y/SIZE), Math.floor(x/SIZE), e.button === 2);
+    });
+
+    canvas.oncontextmenu = (e) => e.preventDefault();
+
+    function draw() {
+        ctx.clearRect(0,0,300,300);
+        for(let r=0; r<ROWS; r++) {
+            for(let c=0; c<COLS; c++) {
+                let x = c*SIZE, y = r*SIZE;
+                ctx.strokeStyle = "#232935"; ctx.lineWidth = 1; ctx.strokeRect(x,y,SIZE,SIZE);
+                
+                if (revealed[r][c]) {
+                    ctx.fillStyle = board[r][c] === -1 ? "#ff6666" : "#2c3342";
+                    ctx.fillRect(x+1,y+1,SIZE-2,SIZE-2);
+                    if (board[r][c] > 0) {
+                        ctx.fillStyle = "#c87984"; ctx.font = "bold 16px Roboto"; ctx.textAlign="center";
+                        ctx.fillText(board[r][c], x+15, y+21);
+                    } else if (board[r][c] === -1) {
+                        ctx.fillStyle = "#1b1f28"; ctx.beginPath(); ctx.arc(x+15, y+15, 6, 0, Math.PI*2); ctx.fill();
+                    }
+                } else {
+                    ctx.fillStyle = "#3c4456"; ctx.fillRect(x+1,y+1,SIZE-2,SIZE-2);
+                    if (flags[r][c]) { ctx.fillStyle = "#dc3545"; ctx.font = "bold 16px Roboto"; ctx.textAlign="center"; ctx.fillText("!", x+15, y+21); }
+                }
+            }
+        }
+
+        if (gameOver) {
+            ctx.fillStyle = "rgba(35, 41, 53, 0.88)";
+            ctx.fillRect(40, 120, 220, 60);
+            ctx.textAlign = "center";
+            ctx.font = "bold 24px Roboto";
+            if (won) {
+                ctx.fillStyle = "#28a745"; ctx.fillText("YOU WIN!", 150, 160);
+            } else {
+                ctx.fillStyle = "#dc3545"; ctx.fillText("GAME OVER", 150, 160);
+            }
+        }
+    }
+    resetGame();
+</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Roboto', sans-serif; background-color: #232935; color: #e8eaee; }
+        
+        #main-container {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: space-between;
+            width: 100%; height: 450px; padding: 5px; box-sizing: border-box;
+        }
+
+        /* Überschrift in deinem Website-Blau */
+        h2 { margin: 0 0 5px 0; color: #c87984; font-weight: 700; font-size: 24px; }
+        
+        .game-area { flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%; }
+        
+        /* Canvas Rahmen angepasst auf #c87984 */
+        canvas { border: 2px solid #c87984; background: #232935; max-width: 100%; height: auto; cursor: pointer; }
+        
+        .controls { text-align: center; width: 100%; margin-top: 5px; }
+        #instruction { font-size: 11px; color: #9ba1ad; margin: 5px 0 0 0; }
+        
+        /* Button Styling */
+        .btn { padding: 8px 25px; border: none; border-radius: 5px; color: #1b1f28; font-weight: bold; cursor: pointer; min-width: 110px; font-family: 'Roboto'; font-size: 14px; transition: background 0.3s; }
+        .play-mode { background-color: #c87984; } /* Dein Blau */
+        .stop-mode { background-color: #dc3545; color: #fff; } /* Rot für Restart */
+        
+        .github-link { display: inline-block; margin-top: 4px; color: #c87984; font-size: 13px; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div id="main-container">
+    <h2>Tic Tac Toe</h2>
+    <div class="game-area">
+        <canvas id="tttCanvas" width="300" height="300"></canvas>
+    </div>
+    <div class="controls">
+        <button id="toggleBtn" class="btn play-mode" onclick="resetGame()">Play</button>
+        <p id="instruction">Turn: <span id="turnDisplay">X</span></p>
+        <a href="https://github.com/harsven/python-games/tree/main/Tic-Tac-Toe" target="_blank" class="github-link">View Python Code on GitHub</a>
+    </div>
+</div>
+
+<script>
+    // --- DOM Elemente ---
+    const canvas = document.getElementById("tttCanvas"); 
+    const ctx = canvas.getContext("2d");
+    const btn = document.getElementById("toggleBtn");
+    const turnDisp = document.getElementById("turnDisplay");
+    
+    // --- Spiel Variablen ---
+    // Das Board ist ein 2D-Array (3x3), gefüllt mit Leerzeichen
+    let board = [[" "," "," "],[" "," "," "],[" "," "," "]];
+    let turn = "X";
+    let winner = null;
+    let gameStarted = false;
+
+    /**
+     * Setzt das Spiel komplett zurück auf den Anfangszustand.
+     */
+    function resetGame() {
+        board = [[" "," "," "],[" "," "," "],[" "," "," "]];
+        turn = "X";
+        winner = null;
+        gameStarted = false;
+        
+        // UI zurücksetzen
+        btn.innerText = "Play";
+        btn.className = "btn play-mode";
+        turnDisp.innerText = turn;
+        draw();
+    }
+
+    /**
+     * Event-Listener für Klicks auf das Spielfeld.
+     */
+    canvas.addEventListener('click', (e) => {
+        // Klick ignorieren, wenn das Spiel bereits vorbei ist
+        if (winner) return;
+
+        // Klick-Koordinaten relativ zum Canvas berechnen
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX - rect.left) * (300 / rect.width);
+        const y = (e.clientY - rect.top) * (300 / rect.height);
+
+        // Umrechnen der Pixel in Raster-Indizes (0, 1 oder 2)
+        const j = Math.floor(x / 100); // Spalte
+        const i = Math.floor(y / 100); // Zeile
+
+        // Zug ausführen, wenn das Feld noch leer ist
+        if (board[i][j] === " ") {
+            // Beim allerersten Klick den Button auf "Restart" umschalten
+            if (!gameStarted) {
+                gameStarted = true;
+                btn.innerText = "Restart";
+                btn.className = "btn stop-mode";
+            }
+
+            // Symbol setzen
+            board[i][j] = turn;
+
+            // Sieg oder Unentschieden prüfen
+            if (checkWin(turn)) { 
+                winner = turn; 
+                turnDisp.innerText = turn + " Wins!"; 
+            }
+            else if (board.flat().every(cell => cell !== " ")) { 
+                winner = "Tie"; 
+                turnDisp.innerText = "It's a Tie!"; 
+            }
+            else { 
+                // Spielerwechsel
+                turn = (turn === "X") ? "O" : "X"; 
+                turnDisp.innerText = turn; 
+            }
+            
+            // Spielfeld neu zeichnen
+            draw();
+        }
+    });
+
+    /**
+     * Prüft alle Gewinnkombinationen (Reihen, Spalten, Diagonalen).
+     * @param {string} s - Das Symbol des aktuellen Spielers ("X" oder "O")
+     */
+    function checkWin(s) {
+        // Reihen und Spalten prüfen
+        for(let i = 0; i < 3; i++) {
+            if(board[i].every(cell => cell === s) || [0,1,2].every(j => board[j][i] === s)) {
+                return true;
+            }
+        }
+        // Diagonalen prüfen
+        const diag1 = (board[0][0] === s && board[1][1] === s && board[2][2] === s);
+        const diag2 = (board[0][2] === s && board[1][1] === s && board[2][0] === s);
+        
+        return diag1 || diag2;
+    }
+
+    /**
+     * Zeichnet das Gitter und die Symbole auf den Canvas.
+     */
+    function draw() {
+        ctx.clearRect(0, 0, 300, 300);
+        
+        // Gitterlinien zeichnen (Farbe: #c87984)
+        ctx.strokeStyle = "#c87984"; 
+        ctx.lineWidth = 4;
+        ctx.lineCap = "round";
+
+        for(let i = 1; i < 3; i++) { 
+            // Vertikale Linien
+            ctx.beginPath(); 
+            ctx.moveTo(i * 100, 15); 
+            ctx.lineTo(i * 100, 285); 
+            ctx.stroke();
+            
+            // Horizontale Linien
+            ctx.beginPath(); 
+            ctx.moveTo(15, i * 100); 
+            ctx.lineTo(285, i * 100); 
+            ctx.stroke();
+        }
+
+        // Symbole (X und O) zeichnen
+        ctx.font = "bold 60px Roboto"; 
+        ctx.textAlign = "center"; 
+        ctx.fillStyle = "#c87984"; // Symbole in Website-Blau
+
+        for(let i = 0; i < 3; i++) {
+            for(let j = 0; j < 3; j++) {
+                if(board[i][j] !== " ") {
+                    // Text mittig in der Zelle platzieren
+                    ctx.fillText(board[i][j], j * 100 + 50, i * 100 + 72);
+                }
+            }
+        }
+    }
+
+    // Initialer Aufruf
+    draw();
+</script>
+
+</body>
+</html>

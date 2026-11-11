@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Roboto', sans-serif; background-color: #232935; color: #e8eaee; }
+        
+        #main-container {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: space-between;
+            width: 100%; height: 450px; padding: 5px; box-sizing: border-box;
+        }
+
+        /* Portfolio-Blau für die Überschrift */
+        h2 { margin: 0 0 5px 0; color: #c87984; font-weight: 700; font-size: 24px; }
+        
+        .game-area { flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%; }
+        
+        /* Canvas Rahmen angepasst auf #c87984 */
+        canvas { border: 2px solid #c87984; background: #232935; max-width: 100%; height: auto; display: block; }
+        
+        .controls { text-align: center; width: 100%; margin-top: 5px; }
+        #instruction { font-size: 11px; color: #9ba1ad; margin: 5px 0 0 0; }
+        
+        /* Button Styling */
+        .btn { padding: 8px 25px; border: none; border-radius: 5px; color: #1b1f28; font-weight: bold; cursor: pointer; min-width: 110px; font-family: 'Roboto'; font-size: 14px; }
+        .play-mode { background-color: #c87984; } /* Dein Blau */
+        .stop-mode { background-color: #dc3545; color: #fff; } /* Standard Rot für Stop */
+        
+        .github-link { display: inline-block; margin-top: 4px; color: #c87984; font-size: 13px; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div id="main-container">
+    <h2>Snake</h2>
+    <div class="game-area">
+        <canvas id="snakeCanvas" width="300" height="300"></canvas>
+    </div>
+    <div class="controls">
+        <button id="toggleBtn" class="btn play-mode" onclick="toggleGame()">Play</button>
+        <p id="instruction">Score: <span id="scoreDisplay">0</span> | Use Arrows to Move</p>
+        <a href="https://github.com/harsven/python-games/tree/main/Snake" target="_blank" class="github-link">View Python Code on GitHub</a>
+    </div>
+</div>
+
+<script>
+    // --- DOM Elemente ---
+    const canvas = document.getElementById("snakeCanvas"); 
+    const ctx = canvas.getContext("2d"); 
+    const btn = document.getElementById("toggleBtn"); 
+    const scoreDisplay = document.getElementById("scoreDisplay");
+
+    // --- Spiel Variablen ---
+    let isRunning = false;
+    let snake = [];
+    let snake_dir = "up";
+    let food_position = [0, 0];
+    let gameLoop;
+    let score = 0;
+    
+    const grid = 15; // Größe eines Quadrats im Raster
+    const BLUE_THEME = "#c87984";
+
+    // Mapping der Richtungen auf Koordinaten-Änderungen (x, y)
+    const offsets = { 
+        "up": [0, -grid], 
+        "down": [0, grid], 
+        "left": [-grid, 0], 
+        "right": [grid, 0] 
+    };
+
+    /**
+     * Initialisiert die Schlange in der Mitte und platziert das erste Futter.
+     */
+    function reset() {
+        // Startposition der Schlange (Kopf + 2 Körperteile)
+        snake = [[150, 150], [150, 165], [150, 180]]; 
+        snake_dir = "up";
+        food_position = getRandomFoodPosition();
+        score = 0;
+        scoreDisplay.innerText = score;
+    }
+
+    /**
+     * Generiert eine zufällige Position für das Futter innerhalb des Grids.
+     */
+    function getRandomFoodPosition() {
+        return [
+            Math.floor(Math.random() * (canvas.width / grid)) * grid, 
+            Math.floor(Math.random() * (canvas.height / grid)) * grid
+        ];
+    }
+
+    /**
+     * Startet oder stoppt den Game-Loop.
+     */
+    function toggleGame() {
+        if (!isRunning) {
+            isRunning = true;
+            btn.innerText = "Stop";
+            btn.className = "btn stop-mode";
+            reset();
+            // Die Schlange bewegt sich alle 110 Millisekunden
+            gameLoop = setInterval(moveSnake, 110);
+        } else {
+            isRunning = false;
+            btn.innerText = "Play";
+            btn.className = "btn play-mode";
+            clearInterval(gameLoop);
+            draw();
+        }
+    }
+
+    /**
+     * Hauptlogik der Schlangenbewegung.
+     */
+    function moveSnake() {
+        // Neuen Kopf berechnen basierend auf der aktuellen Richtung
+        let newHead = [
+            snake[0][0] + offsets[snake_dir][0], 
+            snake[0][1] + offsets[snake_dir][1]
+        ];
+
+        // --- Wand-Kollision (Wrap-around Logik) ---
+        // Wenn die Schlange links rausläuft, kommt sie rechts wieder rein, etc.
+        if (newHead[0] < 0) newHead[0] = canvas.width - grid;
+        else if (newHead[0] >= canvas.width) newHead[0] = 0;
+        
+        if (newHead[1] < 0) newHead[1] = canvas.height - grid;
+        else if (newHead[1] >= canvas.height) newHead[1] = 0;
+
+        // --- Selbst-Kollision prüfen ---
+        for (let segment of snake) {
+            if (newHead[0] === segment[0] && newHead[1] === segment[1]) {
+                toggleGame(); // Spiel beenden bei Kollision
+                return;
+            }
+        }
+
+        // Neuen Kopf zum Schlangen-Array hinzufügen
+        snake.unshift(newHead);
+
+        // --- Futter-Logik ---
+        if (newHead[0] === food_position[0] && newHead[1] === food_position[1]) {
+            // Futter gefressen: Neues Futter platzieren und Schlange wachsen lassen (kein pop())
+            food_position = getRandomFoodPosition();
+            score += 10;
+            scoreDisplay.innerText = score;
+        } else {
+            // Kein Futter: Letztes Teil der Schlange entfernen, um Bewegung zu simulieren
+            snake.pop();
+        }
+        
+        draw();
+    }
+
+    /**
+     * Zeichnet die Schlange und das Futter als Kreise.
+     */
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = BLUE_THEME;
+        
+        // Schlange zeichnen
+        for (let segment of snake) {
+            ctx.beginPath();
+            // Zeichnet Kreise in die Mitte der Grid-Zellen
+            ctx.arc(segment[0] + grid/2, segment[1] + grid/2, 6, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Futter zeichnen
+        ctx.beginPath();
+        ctx.arc(food_position[0] + grid/2, food_position[1] + grid/2, 6, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    /**
+     * Steuerung über die Pfeiltasten.
+     * Verhindert das direkte Umkehren der Richtung (z.B. von Up direkt nach Down).
+     */
+    window.addEventListener("keydown", e => {
+        if (!isRunning) return;
+        
+        if (e.key === "ArrowUp" && snake_dir !== "down") snake_dir = "up";
+        else if (e.key === "ArrowDown" && snake_dir !== "up") snake_dir = "down";
+        else if (e.key === "ArrowLeft" && snake_dir !== "right") snake_dir = "left";
+        else if (e.key === "ArrowRight" && snake_dir !== "left") snake_dir = "right";
+        
+        // Verhindert das Scrollen der Website beim Spielen
+        if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.key)) e.preventDefault();
+    });
+
+    // Initialer Zustand
+    reset(); 
+    draw();
+</script>
+
+</body>
+</html>
