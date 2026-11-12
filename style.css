@@ -109,6 +109,8 @@ figcaption { margin-top: .5rem; color: var(--muted); font-size: .9rem; }
 
 /* About */
 .welcome { max-width: 34rem; padding-top: 1.5rem; }
+.welcome a:not(.chip) { text-decoration: none; }
+.welcome a:not(.chip):hover { text-decoration: underline; text-decoration-thickness: 1px; }
 
 /* Research: ein Kasten pro Eintrag */
 .entries { margin: 0 0 2.25rem; }
