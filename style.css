@@ -82,18 +82,21 @@ footer { padding: 1.1rem 16px; background: var(--bg-dark); color: var(--muted); 
 .chip, .chips a { display: inline-block; padding: .18rem .65rem; border: 1px solid var(--line); border-radius: 4px; background: none; color: var(--accent); font: 500 .85rem var(--serif); text-decoration: none; cursor: pointer; transition: background .15s, border-color .15s; }
 .chip:hover, .chips a:hover, .chip[aria-expanded=true] { background: var(--accent-soft); border-color: var(--accent); }
 .chip-sm { margin-left: .6rem; padding: .08rem .55rem; font-size: .78rem; line-height: 1.5; vertical-align: .1em; }
+.job-market .chip { margin-left: .6rem; padding: .2rem .75rem; font-size: .9rem; vertical-align: .05em; }
+.chip svg { width: .95em; height: .95em; margin-right: .35em; vertical-align: -.15em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .chip-sm + .chip-sm { margin-left: .5rem; }
 
 /* Listen (Teaching, Presentations) */
 .items { margin: 0 0 1rem; padding-left: 1.25rem; }
-.items li { margin: 0 0 .85rem; }
+.items li { margin: 0 0 .85rem; font: 500 .94rem/1.4 var(--serif); }
 .items li::marker { color: var(--accent); }
 .items li > a:not(.chip) { color: var(--text); text-decoration: none; }
 .items li > a:not(.chip):hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
-.sub { display: block; color: var(--muted); font-size: .92rem; line-height: 1.45; }
+.sub { display: block; margin-top: .1rem; color: var(--muted); font: 400 .92rem/1.45 var(--sans); }
 .pins { list-style: none; padding-left: 1.6rem; }
 .pins li { position: relative; }
-.pins li::before { content: "📌"; position: absolute; left: -1.6rem; top: .05rem; font-size: .9rem; }
+.pins { margin-bottom: 3.5rem; }
+.pins li::before { content: ""; position: absolute; left: -1.65rem; top: .2rem; width: 1.25rem; height: 1.25rem; background: var(--accent); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.5 2h7v2l-1.5 1v5l3.5 3.5V15H12.8v6.2L12 23l-.8-1.8V15H6.5v-1.5L10 10V5L8.5 4z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.5 2h7v2l-1.5 1v5l3.5 3.5V15H12.8v6.2L12 23l-.8-1.8V15H6.5v-1.5L10 10V5L8.5 4z'/%3E%3C/svg%3E") center / contain no-repeat; transform: rotate(35deg); }
 .tagline { margin-top: -.5rem; color: var(--muted); font-style: italic; }
 
 /* Fotos: Rahmen beim Darüberfahren, Klick vergrößert */
@@ -105,7 +108,7 @@ figcaption { margin-top: .5rem; color: var(--muted); font-size: .9rem; }
 .zoom-btn img { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: var(--shadow); }
 
 /* About */
-.welcome { max-width: 34rem; padding-top: 1.5rem; font-size: 1.05rem; line-height: 1.7; }
+.welcome { max-width: 34rem; padding-top: 1.5rem; }
 
 /* Research: ein Kasten pro Eintrag */
 .entries { margin: 0 0 2.25rem; }
