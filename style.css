@@ -191,3 +191,10 @@ figcaption { margin-top: .5rem; color: var(--muted); font-size: .9rem; }
 @media (max-width: 520px) {
   .game-grid { grid-template-columns: 1fr; }
 }
+
+/* Teaching: Kennzahlen-Kacheln */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin: 0 0 2.25rem; }
+.stat { padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+.stat-num { display: block; color: var(--accent); font: 500 2rem/1.1 var(--serif); }
+.stat-label { display: block; margin-top: .4rem; color: var(--muted); font: 400 .85rem/1.35 var(--sans); }
+@media (max-width: 640px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
